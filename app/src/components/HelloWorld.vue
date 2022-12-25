@@ -27,11 +27,12 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    <p>
+    <!-- Can't get this to work for now: -->
+    <!--<p>
       We are using Node.js <span id="node-version"></span>,
       Chromium <span id="chrome-version"></span>,
       and Electron <span id="electron-version"></span>.
-    </p>
+    </p>-->
   </div>
 </template>
 
