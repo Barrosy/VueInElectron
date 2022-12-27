@@ -5,7 +5,7 @@ A sample repository for [Vue](https://vuejs.org/guide/introduction.html) framewo
 
 This repository uses [Vue](https://v2.vuejs.org/v2/guide/) version 2.7.14 \(available on [NPM](https://www.npmjs.com/package/vue/v/2.7.14), the latest version of Vue is available on [Gitlab](https://github.com/vuejs/core)\).
 
-The specified Vue version is the latest version compatible with [Electron Builder](https://github.com/nklayman/vue-cli-plugin-electron-builder).
+The specified Vue version is the latest version compatible with [Electron Builder](https://github.com/nklayman/vue-cli-plugin-electron-builder) \(or check [full documentation here](https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html)\).
 
 [Vue Router 3](https://v3.router.vuejs.org/) \([Gitlab](https://github.com/vuejs/vue-router)\) is the latest version available to provided specified Vue version.
 

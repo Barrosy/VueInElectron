@@ -1,4 +1,4 @@
-# app
+# Vue app
 
 ## Project setup
 ```
