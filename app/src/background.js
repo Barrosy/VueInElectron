@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const path = require('path')
@@ -82,3 +82,9 @@ if (isDevelopment) {
     })
   }
 }
+
+ipcMain.on("greet", (event, args) => {
+  console.log(args)
+})
+
+ipcMain.handle("version", async (event, args) => { return 1 })

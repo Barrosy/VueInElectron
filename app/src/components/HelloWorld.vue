@@ -11,22 +11,9 @@
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
     </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    We are using Node.js {{ nodeVersion }},
+    Chromium {{ chromeVersion }},
+    and Electron {{ electronVersion }}.
   </div>
 </template>
 
@@ -35,6 +22,37 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      version: null,
+      dependencies: null,
+      nodeVersion: null,
+      chromeVersion: null,
+      electronVersion: null
+    }
+  },
+  async created() {
+    if(window.api) {
+      //How to send information to Electron Main process:
+      window.api.greet("Hello from renderer")
+
+      //How to receive information from Electron Main process:
+      this.version = await this.asyncGetVersion()
+
+      //Or call directly:
+      this.dependencies = await window.api.getDependencies()
+
+      this.nodeVersion = this.dependencies["node-version"]
+      this.chromeVersion = this.dependencies["chrome-version"]
+      this.electronVersion = this.dependencies["electron-version"]
+    }
+  },
+  methods: {
+    async asyncGetVersion() {
+      //Electron Preload process (located in preload.js) defines method called below:
+      return await window.api.getVersion()
+    }
   }
 }
 </script>

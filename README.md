@@ -38,3 +38,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Inter Process Communication
+See [IPC Reference](https://github.com/nklayman/vue-cli-plugin-electron-builder/discussions/1903)
